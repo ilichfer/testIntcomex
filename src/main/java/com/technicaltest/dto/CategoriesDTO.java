@@ -45,4 +45,21 @@ public class CategoriesDTO {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
+    public CategoriesDTO(Integer categoryID, String categoryName, String description, String picture) {
+        this.categoryID = categoryID;
+        this.categoryName = categoryName;
+        this.description = description;
+        this.picture = picture;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoriesDTO{" +
+                "categoryID=" + categoryID +
+                ", categoryName='" + categoryName + '\'' +
+                ", description='" + description + '\'' +
+                ", picture='" + picture + '\'' +
+                '}';
+    }
 }

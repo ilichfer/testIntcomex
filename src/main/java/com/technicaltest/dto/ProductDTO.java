@@ -6,15 +6,14 @@ import com.technicaltest.model.Suppliers;
 import java.util.List;
 
 public class ProductDTO {
-    private Integer productID;
 
+    private Integer productID;
 
     private String productName;
 
+    private SuppliersDTO supplier;
 
-    private List<Suppliers> supplierID;
-
-    private List<Categories> categoryID;
+    private CategoriesDTO category;
 
     Integer quantityPerUnit;
     Integer unitPrice;
@@ -23,17 +22,15 @@ public class ProductDTO {
     Integer reorderLevel;
     Boolean discontinued;
 
-    public ProductDTO(Integer productID, String productName, List<Suppliers> supplierID, List<Categories> categoryID, Integer quantityPerUnit, Integer unitPrice, Integer unitInStock, Integer unitsOnOrder, Integer reorderLevel, Boolean discontinued) {
-        this.productID = productID;
-        this.productName = productName;
-        this.supplierID = supplierID;
-        this.categoryID = categoryID;
-        this.quantityPerUnit = quantityPerUnit;
-        this.unitPrice = unitPrice;
-        this.unitInStock = unitInStock;
-        this.unitsOnOrder = unitsOnOrder;
-        this.reorderLevel = reorderLevel;
-        this.discontinued = discontinued;
+    public ProductDTO() {
+    }
+
+    public void setSupplier(SuppliersDTO supplier) {
+        this.supplier = supplier;
+    }
+
+    public void setCategory(CategoriesDTO category) {
+        this.category = category;
     }
 
     public Integer getProductID() {
@@ -52,20 +49,12 @@ public class ProductDTO {
         this.productName = productName;
     }
 
-    public List<Suppliers> getSupplierID() {
-        return supplierID;
+    public SuppliersDTO getSupplier() {
+        return supplier;
     }
 
-    public void setSupplierID(List<Suppliers> supplierID) {
-        this.supplierID = supplierID;
-    }
-
-    public List<Categories> getCategoryID() {
-        return categoryID;
-    }
-
-    public void setCategoryID(List<Categories> categoryID) {
-        this.categoryID = categoryID;
+    public CategoriesDTO getCategory() {
+        return category;
     }
 
     public Integer getQuantityPerUnit() {

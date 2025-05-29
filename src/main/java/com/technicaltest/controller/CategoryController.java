@@ -2,6 +2,8 @@ package com.technicaltest.controller;
 
 import com.technicaltest.dto.CategoriesDTO;
 import com.technicaltest.service.ICategoryService;
+import com.technicaltest.util.ApiResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,24 +21,19 @@ public class CategoryController {
     }
 
    // @Operation(summary = "Create a new category", description = "Saves a new category in the system")
-    @PostMapping("/save")
-    public ResponseEntity<CategoriesDTO> createCategories(@RequestBody CategoriesDTO category) {
-        categoryService.save(category);
-        return ResponseEntity.ok(category);
+    @PostMapping()
+    public ResponseEntity<ApiResponse> createCategories(@RequestBody CategoriesDTO category) {
+        CategoriesDTO categoryResponse;
+        ApiResponse<String> response;
+        try {
+             categoryResponse = categoryService.save(category);
+        } catch (RuntimeException e) {
+            response = new ApiResponse<>(HttpStatus.BAD_REQUEST.value(), "Error al crear la categoría", e.getMessage());
+            return ResponseEntity.badRequest().body(response);
+        }
+        response = new ApiResponse<>(HttpStatus.OK.value(), "creacion exitosa",categoryResponse.toString());
+        return ResponseEntity.ok(response);
     }
 
-    //@Operation(summary = "Get paginated categories", description = "Retrieves a paginated list of categories")
-    @GetMapping("/findAll")
-    public ResponseEntity<List<CategoriesDTO>> getProducts() {
 
-
-        return ResponseEntity.ok(categoryService.findAll());
-    }
-
-   // @Operation(summary = "Get category by ID", description = "Retrieves a category by its ID")
-    @GetMapping("/{id}")
-    public ResponseEntity<CategoriesDTO> getCategoryById(@PathVariable Integer id) throws Exception {
-
-        return ResponseEntity.ok(categoryService.findById(id));
-    }
 }

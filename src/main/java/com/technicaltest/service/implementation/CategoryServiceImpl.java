@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryServiceImpl implements ICategoryService {
@@ -24,11 +25,14 @@ public class CategoryServiceImpl implements ICategoryService {
     }
 
     @Override
-    public void save(CategoriesDTO category) {
+    public CategoriesDTO save(CategoriesDTO category) {
+         if (category == null || category.getCategoryID() != null) {
+             throw new RuntimeException("La categoría es nula o ya tiene un ID asignado.");
+         }
        Categories categorySave = CategoryMapper.INSTANCE.DtoToEntity(category);
-       categoryRepository.save(categorySave);
-
-
+       Optional<Categories> categorySaved = Optional.of(categoryRepository.save(categorySave));
+       return categoryMapper.EntitytoCategoryDTO(categorySaved.get());
+       //return categoryMapper.EntitytoCategoryDTO();
     }
 
     @Override
