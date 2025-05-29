@@ -8,6 +8,9 @@ import java.util.List;
 @Table(name = "Products")
 public class Products {
 
+    public Products() {
+    }
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "productID")
@@ -17,11 +20,15 @@ public class Products {
     private String productName;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "supplierID")
-    private List<Suppliers> supplierID;
+    @ManyToOne
+    @JoinColumn(name = "supplierID") // la foránea está aquí
+    private Suppliers supplier;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoryID")
-    private List<Categories> categoryID;
+    @ManyToOne
+    @JoinColumn( name = "categoryID")
+    private Categories category;
+
+
 
     private Integer quantityPerUnit;
     private Integer unitPrice;
@@ -30,20 +37,20 @@ public class Products {
     private Integer reorderLevel;
     private Boolean discontinued;
 
-    public List<Suppliers> getSupplierID() {
-        return supplierID;
+    public Suppliers getSupplier() {
+        return supplier;
     }
 
-    public void setSupplierID(List<Suppliers> supplierID) {
-        this.supplierID = supplierID;
+    public void setSupplier(Suppliers supplier) {
+        this.supplier = supplier;
     }
 
-    public List<Categories> getCategoryID() {
-        return categoryID;
+    public Categories getCategory() {
+        return category;
     }
 
-    public void setCategoryID(List<Categories> categoryID) {
-        this.categoryID = categoryID;
+    public void setCategory(Categories category) {
+        this.category = category;
     }
 
     public Integer getProductID() {
@@ -110,4 +117,16 @@ public class Products {
         this.discontinued = discontinued;
     }
 
+    public Products(Integer productID, String productName, Suppliers supplier, Categories category, Integer quantityPerUnit, Integer unitPrice, Integer unitInStock, Integer unitsOnOrder, Integer reorderLevel, Boolean discontinued) {
+        this.productID = productID;
+        this.productName = productName;
+        this.supplier = supplier;
+        this.category = category;
+        this.quantityPerUnit = quantityPerUnit;
+        this.unitPrice = unitPrice;
+        this.unitInStock = unitInStock;
+        this.unitsOnOrder = unitsOnOrder;
+        this.reorderLevel = reorderLevel;
+        this.discontinued = discontinued;
+    }
 }

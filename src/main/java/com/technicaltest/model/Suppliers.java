@@ -11,6 +11,10 @@ public class Suppliers {
     @Column(name = "id")
     private Integer supplierID;
 
+    @ManyToOne
+    @JoinColumn(name = "productID")
+    private Products product;
+
     @Column
     private String companyName;
     private String contactTitle;
@@ -22,6 +26,14 @@ public class Suppliers {
     private String phone;
     private String fax;
     private String homePage;
+
+    public Products getProduct() {
+        return product;
+    }
+
+    public void setProduct(Products product) {
+        this.product = product;
+    }
 
     public Integer getSupplierID() {
         return supplierID;
@@ -108,6 +120,23 @@ public class Suppliers {
     }
 
     public void setHomePage(String homePage) {
+        this.homePage = homePage;
+    }
+
+    public Suppliers() {
+    }
+
+    public Suppliers(Integer supplierID, String companyName, String contactTitle, String address, String city, String region, String postalCode, String country, String phone, String fax, String homePage) {
+        this.supplierID = supplierID;
+        this.companyName = companyName;
+        this.contactTitle = contactTitle;
+        this.address = address;
+        this.city = city;
+        this.region = region;
+        this.postalCode = postalCode;
+        this.country = country;
+        this.phone = phone;
+        this.fax = fax;
         this.homePage = homePage;
     }
 }

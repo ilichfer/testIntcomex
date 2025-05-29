@@ -49,4 +49,14 @@ public class Categories {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
+    public Categories(Integer categoryID, String categoryName, String description, String picture) {
+        this.categoryID = categoryID;
+        this.categoryName = categoryName;
+        this.description = description;
+        this.picture = picture;
+    }
+
+    public Categories() {
+    }
 }
