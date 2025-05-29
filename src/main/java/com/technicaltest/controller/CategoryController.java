@@ -3,15 +3,17 @@ package com.technicaltest.controller;
 import com.technicaltest.dto.CategoriesDTO;
 import com.technicaltest.service.ICategoryService;
 import com.technicaltest.util.ApiResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@Tag(name = "Category", description = "Category management API")
 @RestController
 @RequestMapping("/Category")
+@Tag(name = "Category", description = "Category management API")
 public class CategoryController {
     
     private final ICategoryService categoryService;
@@ -20,7 +22,7 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-   // @Operation(summary = "Create a new category", description = "Saves a new category in the system")
+    @Operation(summary = "Create a new category", description = "Saves a new category in the system")
     @PostMapping()
     public ResponseEntity<ApiResponse> createCategories(@RequestBody CategoriesDTO category) {
         CategoriesDTO categoryResponse;
