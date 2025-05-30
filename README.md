@@ -18,16 +18,16 @@ This project is a practical example of developing a REST API .
 
 ### : Endpoints
 ### post
-https://15.229.9.242/Category/
+http://15.229.9.242/Category/
 ### post
-https://15.229.9.242/Product/
+http://15.229.9.242/Product/
 ### Get
-https://15.229.9.242/Products/
+http://15.229.9.242/Products/
 ### Get
-https://15.229.9.242/Products/id/
+http://15.229.9.242/Products/id/
 
 ### :documentation
- https://15.229.9.242/swagger-ui/index.html#/
+ http://15.229.9.242/swagger-ui/index.html#/
 
 ### : Testing
 1. Run unit tests: `> mvn test``
