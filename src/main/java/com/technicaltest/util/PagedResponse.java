@@ -17,6 +17,10 @@ public class PagedResponse<T> {
         this.pageSize = pageSize;
     }
 
+    public PagedResponse() {
+
+    }
+
     public List<T> getContent() {
         return content;
     }

@@ -9,8 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/Category")
 @Tag(name = "Category", description = "Category management API")
@@ -36,6 +34,4 @@ public class CategoryController {
         response = new ApiResponse<>(HttpStatus.OK.value(), "creacion exitosa",categoryResponse.toString());
         return ResponseEntity.ok(response);
     }
-
-
 }

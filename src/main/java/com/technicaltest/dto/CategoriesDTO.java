@@ -14,6 +14,10 @@ public class CategoriesDTO {
     //datos para guardar imagen
     private String picture;
 
+    public CategoriesDTO() {
+
+    }
+
     public Integer getCategoryID() {
         return categoryID;
     }
